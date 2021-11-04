@@ -27,5 +27,7 @@ class UserProfileSeeder extends Seeder
         $user2->user_type = "admin";
         $user2->registration_date = "2021-10-20";
         $user2->save();
+
+        $userProfiles = UserProfile::factory()->count(15)->create();
     }
 }
