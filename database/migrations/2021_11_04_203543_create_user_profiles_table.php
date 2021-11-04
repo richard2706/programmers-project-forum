@@ -17,7 +17,7 @@ class CreateUserProfilesTable extends Migration
             $table->id();
             $table->string("username");
             $table->enum("user_type", ["admin", "standard"]);
-            $table->date("registration_date");
+            $table->date("registration_date"); // YYYY-MM-DD
             $table->date("birthday")->nullable();
             $table->string("description")->nullable();
             $table->timestamps();
