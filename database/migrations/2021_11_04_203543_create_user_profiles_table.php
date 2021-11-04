@@ -15,7 +15,7 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string("username");
+            $table->string("username")->unique();
             $table->enum("user_type", ["admin", "standard"]);
             $table->date("registration_date"); // YYYY-MM-DD
             $table->date("birthday")->nullable();
