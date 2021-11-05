@@ -15,11 +15,11 @@ class UserProfileFactory extends Factory
     public function definition()
     {
         return [
-            "username" => $this->faker->userName(),
+            "username" => $this->faker->unique()->userName(),
             "user_type" => $this->faker->randomElement(["admin", "standard"]),
             "registration_date" => $this->faker->dateTimeThisYear->format("Y-m-d"),
-            "birthday" => $this->faker->date(),
-            "description" => $this->faker->sentence(),
+            "birthday" => $this->faker->optional()->date(),
+            "description" => $this->faker->optional()->sentence(),
         ];
     }
 }
