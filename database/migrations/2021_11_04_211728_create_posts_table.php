@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("content");
+            $table->string("content", 500);
             $table->unsignedBigInteger("user_profile_id");
             $table->unsignedInteger("upvotes");
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS

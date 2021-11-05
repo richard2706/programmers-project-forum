@@ -28,6 +28,11 @@ class UserProfileSeeder extends Seeder
         $user2->registration_date = "2021-10-20";
         $user2->save();
 
-        $userProfiles = UserProfile::factory()->count(15)->create();
+        // Create a random number of posts for each user
+        $numUsers = 15;
+        for ($i=0; $i < $numUsers; $i++) { 
+            $numPosts = rand(0, 3);
+            $userProfiles = UserProfile::factory()->count(1)->hasPosts($numPosts)->create();
+        }
     }
 }
