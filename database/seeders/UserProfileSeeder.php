@@ -32,7 +32,7 @@ class UserProfileSeeder extends Seeder
         $numUsers = 15;
         for ($i=0; $i < $numUsers; $i++) { 
             $numPosts = rand(0, 3);
-            $userProfiles = UserProfile::factory()->count(1)->hasPosts($numPosts)->create();
+            UserProfile::factory()->count(1)->hasPosts($numPosts)->create();
         }
     }
 }
