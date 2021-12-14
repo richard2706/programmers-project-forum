@@ -17,15 +17,13 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string("title");
             $table->string("content", 500);
-            $table->unsignedBigInteger("user_profile_id");
+            $table->foreignId('user_profile_id')->constrained()
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedInteger("upvotes");
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS
             $table->string("project_link")->nullable();
             $table->string("image_link")->nullable();
             $table->timestamps();
-
-            $table->foreign("user_profile_id")->references("id")->on("user_profiles")
-                ->onUpdate("cascade");
         });
     }
 
