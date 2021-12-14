@@ -10,7 +10,7 @@ class UserProfile extends Model
     use HasFactory;
 
     /**
-     * Returs the user associated with this profile.
+     * Returns the user associated with this profile.
      */
     public function user()
     {
@@ -18,9 +18,17 @@ class UserProfile extends Model
     }
 
     /**
-     * Gets a list of the posts that this user has created.
+     * Returns a list of the posts that this user has created.
      */
     public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Returns a list of all comments posted by this user.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

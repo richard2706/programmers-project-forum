@@ -15,9 +15,12 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('post_id')->constrained()
+                ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_profile_id')->constrained()
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->string("content");
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS
-            $table->unsignedInteger("upvotes");
             $table->timestamps();
         });
     }

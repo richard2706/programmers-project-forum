@@ -15,4 +15,12 @@ class Post extends Model
     public function userProfile() {
         return $this->belongsTo(UserProfile::class);
     }
+
+    /**
+     * Gets all the comments associated with this post.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
