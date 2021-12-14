@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string("content", 500);
             $table->foreignId('user_profile_id')->constrained()
                 ->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedInteger("upvotes");
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS
             $table->string("project_link")->nullable();
             $table->string("image_link")->nullable();
