@@ -34,5 +34,14 @@ class PostTableSeeder extends Seeder
         $post3->content = "Some cool Christmas veggies!";
         $post3->date_time_posted = "2021-12-09 12:02:10";
         $strongAppleUser->posts()->save($post3);
+
+        // Create a random number of posts for each user profile
+        $existingUserIds = [1, 2];
+        $profiles = UserProfile::get()->except($existingUserIds);
+        foreach ($profiles as $profile) {
+            $numPosts = rand(0, 3);
+            // UserProfile::factory()->count(1)->hasPosts($numPosts)->create();
+            Post::factory()->count($numPosts)->for($profile)->create();
+        }
     }
 }

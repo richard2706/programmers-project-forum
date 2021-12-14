@@ -12,7 +12,7 @@ class Post extends Model
     /**
      * Gets the user profile of the user who posted this comment.
      */
-    public function user_profile() {
+    public function userProfile() {
         return $this->belongsTo(UserProfile::class);
     }
 }

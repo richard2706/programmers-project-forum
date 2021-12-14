@@ -20,7 +20,6 @@ class PostFactory extends Factory
         return [
             "title" => $this->faker->words($numTitleWords, true),
             "content" => $this->faker->paragraph(),
-            "upvotes" => $this->faker->numberBetween(0, $numUsers),
             "date_time_posted" => $this->faker->dateTimeThisYear->format("Y-m-d H:i:s"),
             "project_link" => $this->faker->optional()->url,
             "image_link" => $this->faker->optional()->url,
