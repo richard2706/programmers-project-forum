@@ -13,6 +13,7 @@
                             <p>{{ $post->userProfile->username }}</p>
                             <i>{{ $post->date_time_posted }}</i>
                             <p>{{ substr($post->content, 0, 100) . ((strlen($post->content) > 100) ? '...' : '') }}</p>
+                            <a href="{{ route('posts.show', compact('post')) }}">See Post</a>
                         </div>
                     @endforeach
                 </div>

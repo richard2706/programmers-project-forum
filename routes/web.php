@@ -21,4 +21,7 @@ Route::get('/', function () {
 Route::get('/home', [PostController::class, 'index'])
     ->middleware(['auth'])->name('home');
 
+Route::get('/home/posts/{post}', [PostController::class, 'show'])
+    ->middleware(['auth'])->name('posts.show');
+
 require __DIR__.'/auth.php';
