@@ -19,7 +19,7 @@ class PostFactory extends Factory
 
         return [
             "title" => $this->faker->words($numTitleWords, true),
-            "content" => $this->faker->paragraph(),
+            "content" => $this->faker->paragraph(5),
             "date_time_posted" => $this->faker->dateTimeThisYear->format("Y-m-d H:i:s"),
             "project_link" => $this->faker->optional()->url,
             "image_link" => $this->faker->optional()->url,
