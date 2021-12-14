@@ -29,5 +29,20 @@ class CommentTableSeeder extends Seeder
         $strongAppleId = UserProfile::find(2)->id;
         $comment2->user_profile_id = $strongAppleId;
         Post::find(1)->comments()->save($comment2);
+
+        // Create random numbers of comments by random users for each post
+        $posts = Post::get();
+        $profiles = UserProfile::get();
+        foreach ($posts as $post) {
+            $numCommenters = rand(0, 5);
+            $commenters = $profiles->random($numCommenters);
+
+            foreach ($commenters as $commenter) {
+                $commenterId = $commenter->id;
+                $numComments = rand(1, 3);
+                Comment::factory()->count($numComments)->for($post)
+                    ->create(['user_profile_id' => $commenterId,]);
+            }
+        }
     }
 }
