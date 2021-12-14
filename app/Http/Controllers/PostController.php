@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::orderByDesc('date_time_posted')->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -47,7 +47,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        dd($post);
+        
     }
 
     /**
