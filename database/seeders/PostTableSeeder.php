@@ -28,5 +28,11 @@ class PostTableSeeder extends Seeder
         $post2->date_time_posted = "2021-10-27 08:32:14";
         $strongAppleUser = UserProfile::find(2);
         $strongAppleUser->posts()->save($post2);
+
+        $post3 = new Post;
+        $post3->title = "Xmas Veggies Project";
+        $post3->content = "Some cool Christmas veggies!";
+        $post3->date_time_posted = "2021-12-09 12:02:10";
+        $strongAppleUser->posts()->save($post3);
     }
 }
