@@ -10,6 +10,14 @@ class UserProfile extends Model
     use HasFactory;
 
     /**
+     * Returs the user associated with this profile.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Gets a list of the posts that this user has created.
      */
     public function posts() {
