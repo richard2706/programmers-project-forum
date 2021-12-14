@@ -29,6 +29,12 @@ class UserProfileTableSeeder extends Seeder
         $profile2->registration_date = "2021-10-20";
         User::find(2)->userProfile()->save($profile2);
 
+        $existingUserIds = [1, 2];
+        $users = User::get()->except($existingUserIds);
+        foreach ($users as $user) {
+            UserProfile::factory()->for($user)->create();
+        }
+
         // // Create a random number of posts for each user
         // $numUsers = 15;
         // for ($i=0; $i < $numUsers; $i++) { 
