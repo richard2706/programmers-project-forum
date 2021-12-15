@@ -31,8 +31,11 @@ Route::post('/home', [PostController::class, 'store'])
 Route::get('/home/posts/{post}', [PostController::class, 'show'])
     ->middleware(['auth'])->name('posts.show');
 
-Route::get('home/posts/edit/{post}', [PostController::class, 'edit'])
+Route::get('home/posts/{post}/edit', [PostController::class, 'edit'])
     ->middleware(['auth'])->name('posts.edit');
+
+Route::post('/home/posts/{post}/update', [PostController::class, 'update'])
+    ->middleware(['auth'])->name('posts.update');
 
 Route::get('/home/posts/{post}/newcomment', [CommentController::class, 'create'])
     ->middleware(['auth'])->name('comments.create');

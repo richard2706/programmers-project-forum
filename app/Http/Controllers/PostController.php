@@ -84,12 +84,25 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'project_link' => ['nullable', 'url'],
+            'image_link' => ['nullable', 'url'],
+            'content' => ['required'],
+        ]);
+
+        $post->title = $request->title;
+        $post->project_link = $request->project_link;
+        $post->image_link = $request->image_link;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**

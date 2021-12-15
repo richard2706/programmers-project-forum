@@ -20,7 +20,7 @@
                         </ul>
                     @endif
 
-                    <form method="POST" action="{{ route('posts.store') }}">
+                    <form method="POST" action="{{ route('posts.update', compact('post')) }}">
                         @csrf
                         <div class="mb-4">
                             <p>Title</p>
