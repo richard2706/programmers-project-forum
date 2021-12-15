@@ -10,6 +10,14 @@
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    @if($errors->any())
+                        <p>Errors:</p>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
 
                     <form method="POST" action="{{ route('posts.store') }}">
                         @csrf
