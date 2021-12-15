@@ -9,7 +9,7 @@
                 <a class="hover:underline" href="{{ route('posts.create') }}">New Post</a>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (session('message'))
                         <p>{{ session('message') }}</p>
@@ -26,6 +26,8 @@
                     @endforeach
                 </div>
             </div>
+
+            {{ $posts->links() }}
         </div>
     </div>
 </x-app-layout>
