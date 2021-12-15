@@ -44,7 +44,6 @@ class User extends Authenticatable
 
     /**
      * Returns this user's profile.
-     * 
      */
     public function userProfile()
     {

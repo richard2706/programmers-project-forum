@@ -40,7 +40,6 @@ class PostTableSeeder extends Seeder
         $profiles = UserProfile::get()->except($existingUserIds);
         foreach ($profiles as $profile) {
             $numPosts = rand(0, 3);
-            // UserProfile::factory()->count(1)->hasPosts($numPosts)->create();
             Post::factory()->count($numPosts)->for($profile)->create();
         }
     }
