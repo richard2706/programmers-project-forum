@@ -18,7 +18,7 @@
                         <!-- Insert image here -->
                         <p class="mt-2">{{ $post->content }}</p>
                         @if (Auth::user()->userProfile == $post->userProfile)
-                            You posted this.
+                            <a class="hover:underline" href="{{ route('posts.edit', compact('post')) }}">Edit Post</a>
                         @endif
                     </div>
 
