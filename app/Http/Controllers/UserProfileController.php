@@ -36,11 +36,6 @@ class UserProfileController extends Controller
      */
     public static function store(Request $request, User $user)
     {
-        $request->validate([
-            'username' => ['required', 'max:255', 'unique:user_profiles'],
-            'description' => ['max:500'],
-        ]);
-
         $profile = new UserProfile;
         $profile->username = $request->username;
         $profile->user_type = "standard";
