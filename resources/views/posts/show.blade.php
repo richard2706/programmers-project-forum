@@ -34,7 +34,7 @@
 
                     @foreach ($comments as $comment)
                         <div class="my-4 p-2 bg-gray-100 rounded" >
-                            <p class="text-sm">{{ $comment->userProfile->username }}, <i>{{ $comment->date_time_posted }}</i></p>
+                            <p class="text-sm">Posted by {{ $comment->userProfile->username }}, <i>{{ $comment->date_time_posted }}</i></p>
                             <p class="mt-1">{{ $comment->content }}</p>
                         </div>
                     @endforeach
