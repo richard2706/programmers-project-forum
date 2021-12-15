@@ -50,7 +50,8 @@ class CommentController extends Controller
         $comment->userProfile()->associate($currentProfile);
         $post->comments()->save($comment);
 
-        return redirect()->route('posts.show', compact('post'));
+        return redirect()->route('posts.show', compact('post'))
+            ->with('message', 'Comment added.');
     }
 
     /**

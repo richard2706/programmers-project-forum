@@ -20,6 +20,10 @@
                         <p class="mt-2">{{ $post->content }}</p>
                     </div>
 
+                    @if (session('message'))
+                        <p>{{ session('message') }}</p>
+                    @endif
+
                     <a class="hover:underline" href="{{ route('comments.create', compact('post')) }}">Add comment</a>
 
                     @if($comments->count() == 0)
