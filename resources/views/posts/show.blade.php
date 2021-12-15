@@ -45,7 +45,7 @@
 
                         @foreach ($comments as $comment)
                             <div class="my-4 p-2 bg-gray-100 rounded" >
-                                <p class="text-sm">Posted by {{ $comment->userProfile->username }}, <i>{{ $comment->date_time_posted }}</i></p>
+                                <p class="text-sm">Posted by {{ $comment->userProfile->username }}@if(Auth::user()->userProfile == $comment->userProfile) (you)@endif, <i>{{ $comment->date_time_posted }}</i></p>
                                 <p class="mt-1">{{ $comment->content }}</p>
                                 @if (Auth::user()->userProfile == $comment->userProfile)
                                     <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
