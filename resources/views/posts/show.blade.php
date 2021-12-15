@@ -38,6 +38,8 @@
                             <p class="mt-1">{{ $comment->content }}</p>
                         </div>
                     @endforeach
+
+                    {{ $comments->links() }}
                 </div>
             </div>
         </div>
