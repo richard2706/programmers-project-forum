@@ -25,8 +25,8 @@
                         @endif
                     </div>
 
-                    @if (session('message'))
-                        <p>{{ session('message') }}</p>
+                    @if (session('comment_message'))
+                        <p>{{ session('comment_message') }}</p>
                     @endif
 
                     <a class="hover:underline" href="{{ route('comments.create', compact('post')) }}">Add comment</a>

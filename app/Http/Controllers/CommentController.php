@@ -51,7 +51,7 @@ class CommentController extends Controller
         $post->comments()->save($comment);
 
         return redirect()->route('posts.show', compact('post'))
-            ->with('message', 'Comment added.');
+            ->with('comment_message', 'Comment added.');
     }
 
     /**
