@@ -46,4 +46,7 @@ Route::post('/home/posts/{post}', [CommentController::class, 'store'])
 Route::get('/home/posts/{post}/comment/{comment}/editcomment', [CommentController::class, 'edit'])
     ->middleware(['auth'])->name('comments.edit');
 
+Route::post('/home/posts/{post}/comment/{comment}/update', [CommentController::class, 'update'])
+    ->middleware(['auth'])->name('comments.update');
+
 require __DIR__.'/auth.php';

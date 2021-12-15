@@ -68,24 +68,34 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
+     * @param  Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post, Comment $comment)
     {
-        return 'test';
+        return view('comments.edit', compact('post', 'comment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post  $post
+     * @param  Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post, Comment $comment)
     {
-        //
+        $request->validate([
+            'content' => ['required', 'max:2000'],
+        ]);
+
+        $comment->content = $request->content;
+        $comment->save();
+
+        return redirect()->route('posts.show', compact('post'))
+            ->with('comment_message', 'Comment updated.');
     }
 
     /**
