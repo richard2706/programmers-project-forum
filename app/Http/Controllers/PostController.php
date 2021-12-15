@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -36,7 +37,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'project_link' => ['nullable', 'url'],
+            'image_link' => ['nullable', 'url'],
+            'content' => ['required'],
+        ]);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->date_time_posted = date('Y-m-d');
+        $post->project_link = $request->project_link;
+        $post->image_link = $request->image_link;
+        $currentProfile = Auth::user()->userProfile;
+        $currentProfile->posts()->save($post);
+
+        return redirect()->route('home')->with('message', 'Post added successfully.');
     }
 
     /**
