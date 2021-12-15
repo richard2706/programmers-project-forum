@@ -16,7 +16,10 @@
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif
                         <!-- Insert image here -->
-                        <p class="mt-2">{{ $post->content }}</p>
+                        <p class="my-2">{{ $post->content }}</p>
+                        @if (session('post_message'))
+                            <p>{{ session('post_message') }}</p>
+                        @endif
                         @if (Auth::user()->userProfile == $post->userProfile)
                             <a class="hover:underline" href="{{ route('posts.edit', compact('post')) }}">Edit Post</a>
                         @endif

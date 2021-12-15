@@ -102,7 +102,8 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return redirect()->route('posts.show', compact('post'));
+        return redirect()->route('posts.show', compact('post'))
+            ->with('post_message', 'Post updated.');
     }
 
     /**
