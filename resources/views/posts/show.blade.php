@@ -48,7 +48,9 @@
                                 <p class="text-sm">Posted by {{ $comment->userProfile->username }}@if(Auth::user()->userProfile == $comment->userProfile) (you)@endif, <i>{{ $comment->date_time_posted }}</i></p>
                                 <p class="mt-1">{{ $comment->content }}</p>
                                 @if (Auth::user()->userProfile == $comment->userProfile)
-                                    <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
+                                    <div class="mt-2">
+                                        <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
+                                    </div>
                                 @endif
                             </div>
                         @endforeach
