@@ -47,7 +47,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->date_time_posted = date('Y-m-d');
+        $post->date_time_posted = date('Y-m-d H:i:s');
         $post->project_link = $request->project_link;
         $post->image_link = $request->image_link;
         $currentProfile = Auth::user()->userProfile;

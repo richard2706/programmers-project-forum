@@ -34,7 +34,7 @@ Route::get('/home/posts/{post}', [PostController::class, 'show'])
 Route::get('/home/posts/{post}/newcomment', [CommentController::class, 'create'])
     ->middleware(['auth'])->name('comments.create');
 
-Route::post('/home/posts/{post}', [PostController::class, 'store'])
+Route::post('/home/posts/{post}', [CommentController::class, 'store'])
     ->middleware(['auth'])->name('comments.store');
 
 require __DIR__.'/auth.php';

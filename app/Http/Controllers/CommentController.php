@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -31,12 +33,24 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  Post  $post
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'content' => ['required', 'max:2000'],
+        ]);
+
+        $comment = new Comment;
+        $comment->content = $request->content;
+        $comment->date_time_posted = date('Y-m-d H:i:s');
+        $currentProfile = Auth::user()->userProfile;
+        $comment->userProfile()->associate($currentProfile);
+        $post->comments()->save($comment);
+
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
