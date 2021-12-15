@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Comment</h2>
+        <i>{{ $post->title }}</i>
     </x-slot>
 
     <div class="py-6">
@@ -21,7 +22,7 @@
 
                     <form method="POST" action="{{ route('comments.store', compact('post')) }}">
                         @csrf
-                        <div class="my-4">
+                        <div class="mb-4">
                             <p>Comment</p>
                             <input type="text" name="content"/>
                         </div>
