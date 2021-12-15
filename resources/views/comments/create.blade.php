@@ -26,7 +26,7 @@
                             <p>Comment</p>
                             <input type="text" name="content"/>
                         </div>
-                        <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Save post"/>
+                        <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Save comment"/>
                     </form>
                 </div>
             </div>
