@@ -11,13 +11,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mb-6">
-                        <p>Posted by {{ $post->userProfile->username }}</p>
-                        <i>{{ $post->date_time_posted }}</i>
+                        <p class="text-sm">Posted by {{ $post->userProfile->username }}@if(Auth::user()->userProfile == $post->userProfile) (you)@endif, <i>{{ $post->date_time_posted }}</i></p>
                         @if($post->project_link)
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif
                         <!-- Insert image here -->
                         <p class="mt-2">{{ $post->content }}</p>
+                        @if (Auth::user()->userProfile == $post->userProfile)
+                            You posted this.
+                        @endif
                     </div>
 
                     @if (session('message'))
