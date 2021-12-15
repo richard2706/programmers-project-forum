@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
                 ->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_profile_id')->constrained()
                 ->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string("content");
+            $table->text("content");
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS
             $table->timestamps();
         });
