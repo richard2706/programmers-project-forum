@@ -11,9 +11,8 @@
                         <a href="{{ route('posts.show', compact('post')) }}">
                             <div class="my-4 p-2 bg-gray-100 rounded hover:bg-gray-200">
                                 <b>{{ $post->title }}</b>
-                                <p>{{ $post->userProfile->username }}</p>
-                                <i>{{ $post->date_time_posted }}</i>
-                                <p>{{ substr($post->content, 0, 100) . ((strlen($post->content) > 100) ? '...' : '') }}</p>
+                                <p class="text-sm">{{ $post->userProfile->username }}, <i>{{ $post->date_time_posted }}</i></p>
+                                <p class="mt-2">{{ substr($post->content, 0, 100) . ((strlen($post->content) > 100) ? '...' : '') }}</p>
                             </div>
                         </a>
                     @endforeach
