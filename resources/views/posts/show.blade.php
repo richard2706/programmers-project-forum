@@ -20,6 +20,8 @@
                         <p class="mt-2">{{ $post->content }}</p>
                     </div>
 
+                    <a class="hover:underline" href="{{ route('comments.create', compact('post')) }}">Add comment</a>
+
                     @if($comments->count() == 0)
                         <div class="mt-6 p-2 bg-gray-100 rounded">
                             <p class="text-center">No comments</p>

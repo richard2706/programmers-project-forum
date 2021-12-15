@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,7 @@ Route::post('/home', [PostController::class, 'store'])
 Route::get('/home/posts/{post}', [PostController::class, 'show'])
     ->middleware(['auth'])->name('posts.show');
 
-
+Route::get('/home/posts/{post}/newcomment', [CommentController::class, 'create'])
+    ->middleware(['auth'])->name('comments.create');
 
 require __DIR__.'/auth.php';
