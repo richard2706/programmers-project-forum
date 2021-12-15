@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -52,7 +52,14 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        UserProfileController::store($request, $user);
+        // Create the corresponding user profile
+        $profile = new UserProfile;
+        $profile->username = $request->username;
+        $profile->user_type = "standard";
+        $profile->registration_date = date('Y-m-d');
+        $profile->birthday = $request->birthday;
+        $profile->description = $request->description;
+        $user->userProfile()->save($profile);
 
         return redirect(RouteServiceProvider::HOME);
     }
