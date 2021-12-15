@@ -47,7 +47,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = $post->comments->sortBy('date_time_posted');
+        $comments = $post->comments->sortByDesc('date_time_posted');
         return view('posts.show', compact('post', 'comments'));
     }
 
