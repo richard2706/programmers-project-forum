@@ -84,7 +84,8 @@ class PostController extends Controller
             return abort(403);
         }
 
-        return view('posts.edit', compact('post'));
+        $tags = Tag::get();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     /**
