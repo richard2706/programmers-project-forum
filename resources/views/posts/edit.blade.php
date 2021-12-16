@@ -20,14 +20,14 @@
                         </ul>
                     @endif
 
-                    {{-- {{ $post->tags->moe }} --}}
-
                     <form method="POST" action="{{ route('posts.update', compact('post')) }}">
                         @csrf
+
                         <div class="mb-4">
                             <p>Title</p>
                             <input type="text" name="title" value="{{ $post->title }}"/>
                         </div>
+
                         <div class="mb-4">
                             <p>Tags</p>
                             <p><i class="text-sm">Please ctrl + click to select multiple tags</i></p>
@@ -37,18 +37,17 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="my-4">
                             <p>Project Link (optional)</p>
                             <input type="text" name="project_link" value="{{ $post->project_link }}"/>
                         </div>
-                        <div class="my-4">
-                            <p>Image (optional)</p>
-                            <input type="text" name="image_link" value="{{ $post->image_link }}"/>
-                        </div>
+                        
                         <div class="my-4">
                             <p>Content</p>
                             <input type="text" name="content" value="{{ $post->content }}"/>
                         </div>
+                        
                         <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Update post"/>
                     </form>
                 </div>

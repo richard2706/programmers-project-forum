@@ -22,10 +22,12 @@
 
                     <form method="POST" action="{{ route('comments.update', compact('post', 'comment')) }}">
                         @csrf
+
                         <div class="mb-4">
                             <p>Comment</p>
                             <input type="text" name="content" value="{{ $comment->content }}"/>
                         </div>
+                        
                         <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Update comment"/>
                     </form>
                 </div>

@@ -21,10 +21,12 @@
 
                     <form method="POST" action="{{ route('posts.store') }}">
                         @csrf
+
                         <div class="mb-4">
                             <p>Title</p>
                             <input type="text" name="title" value="{{ old('title') }}"/>
                         </div>
+
                         <div class="mb-4">
                             <p>Tags</p>
                             <p><i class="text-sm">Please ctrl + click to select multiple tags</i></p>
@@ -34,18 +36,17 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="my-4">
                             <p>Project Link (optional)</p>
                             <input type="text" name="project_link" value="{{ old('project_link') }}"/>
                         </div>
-                        <div class="my-4">
-                            <p>Image (optional)</p>
-                            <input type="text" name="image_link"/>
-                        </div>
+                        
                         <div class="my-4">
                             <p>Content</p>
                             <input type="text" name="content" value="{{ old('content') }}"/>
                         </div>
+                        
                         <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Save post"/>
                     </form>
                 </div>
