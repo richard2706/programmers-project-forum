@@ -109,14 +109,19 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
-            'image_path' => ['nullable', 'url'],
+            'image' => ['nullable', 'image'],
             'content' => ['required'],
         ]);
 
         $post->title = $request->title;
         $post->project_link = $request->project_link;
-        $post->image_path = $request->image_path;
         $post->content = $request->content;
+
+        if ($request->has('image')) {
+            $imagePath = $request->file('image')->store('public/post-images');
+            $post->image_path = $imagePath;
+        }
+        
         $post->save();
 
         // Remove all old tags then add updated tags

@@ -20,7 +20,7 @@
                         </ul>
                     @endif
 
-                    <form method="POST" action="{{ route('posts.update', compact('post')) }}">
+                    <form method="POST" action="{{ route('posts.update', compact('post')) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
                             <p>Title</p>
