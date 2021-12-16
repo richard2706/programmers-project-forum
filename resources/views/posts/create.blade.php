@@ -23,7 +23,7 @@
                         @csrf
                         <div class="mb-4">
                             <p>Title</p>
-                            <input type="text" name="title"/>
+                            <input type="text" name="title" value="{{ old('title') }}"/>
                         </div>
                         <div class="mb-4">
                             <p>Tags</p>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="my-4">
                             <p>Project Link (optional)</p>
-                            <input type="text" name="project_link"/>
+                            <input type="text" name="project_link" value="{{ old('project_link') }}"/>
                         </div>
                         <div class="my-4">
                             <p>Image (optional)</p>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="my-4">
                             <p>Content</p>
-                            <input type="text" name="content"/>
+                            <input type="text" name="content" value="{{ old('content') }}"/>
                         </div>
                         <input class="p-2 rounded bg-green-200 hover:bg-green-300 cursor-pointer" type="submit" value="Save post"/>
                     </form>
