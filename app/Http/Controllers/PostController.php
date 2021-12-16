@@ -54,8 +54,9 @@ class PostController extends Controller
         $post->project_link = $request->project_link;
 
         if ($request->has('image')) {
-            $imagePath = $request->file('image')->store('public/post-images');
-            $post->image_path = $imagePath;
+            $folder = 'public';
+            $imagePath = $request->file('image')->store($folder . '/post-images');
+            $post->image_path = substr($imagePath, strlen($folder) + 1);
         }
 
         $currentProfile = Auth::user()->userProfile;
@@ -118,8 +119,9 @@ class PostController extends Controller
         $post->content = $request->content;
 
         if ($request->has('image')) {
-            $imagePath = $request->file('image')->store('public/post-images');
-            $post->image_path = $imagePath;
+            $folder = 'public';
+            $imagePath = $request->file('image')->store($folder . '/post-images');
+            $post->image_path = substr($imagePath, strlen($folder) + 1);
         }
         
         $post->save();

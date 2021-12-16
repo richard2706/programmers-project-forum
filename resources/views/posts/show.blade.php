@@ -24,7 +24,10 @@
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif
                         
-                        <p class="my-4">{{ $post->content }}</p>
+                        <div class="my-4">
+                            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Shows an aspect of {{ $post->userProfile->username }}'s project.">
+                            <p>{{ $post->content }}</p>
+                        </div>
                         @if (session('post_message'))
                             <p>{{ session('post_message') }}</p>
                         @endif
