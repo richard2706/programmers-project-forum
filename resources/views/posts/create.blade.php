@@ -27,7 +27,7 @@
                         </div>
                         <div class="mb-4">
                             <p>Tags</p>
-                            <select name="tags" multiple>
+                            <select name="tag[]" multiple>
                                 @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                 @endforeach

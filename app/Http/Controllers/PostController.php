@@ -55,6 +55,7 @@ class PostController extends Controller
         $post->image_link = $request->image_link;
         $currentProfile = Auth::user()->userProfile;
         $currentProfile->posts()->save($post);
+        $post->tags()->attach($request->tag);
 
         return redirect()->route('home')->with('message', 'Post added successfully.');
     }
