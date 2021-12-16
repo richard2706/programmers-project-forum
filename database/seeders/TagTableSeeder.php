@@ -25,5 +25,7 @@ class TagTableSeeder extends Seeder
         $tag3 = new Tag;
         $tag3->name = "Engineering";
         $tag3->save();
+
+        Tag::factory()->count(5)->create();
     }
 }
