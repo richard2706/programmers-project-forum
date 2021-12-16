@@ -20,6 +20,13 @@
                             <div class="my-4 p-2 bg-gray-100 rounded hover:bg-gray-200">
                                 <b>{{ $post->title }}</b>
                                 <p class="text-sm">{{ $post->userProfile->username }}, <i>{{ $post->date_time_posted }}</i></p>
+                                <p>Tags: 
+                                    @if ($post->tags->count() > 0)
+                                        @foreach ($post->tags as $tag) {{ $tag->name }},@endforeach
+                                    @else
+                                        None
+                                    @endif
+                                </p>
                                 <p class="mt-2">{{ substr($post->content, 0, 100) . ((strlen($post->content) > 100) ? '...' : '') }}</p>
                             </div>
                         </a>

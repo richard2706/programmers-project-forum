@@ -13,6 +13,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
                         <p class="text-sm">Posted by {{ $post->userProfile->username }}@if(Auth::user()->userProfile == $post->userProfile) (you)@endif, <i>{{ $post->date_time_posted }}</i></p>
+                        <p>Tags: 
+                            @if ($post->tags->count() > 0)
+                                @foreach ($post->tags as $tag) {{ $tag->name }},@endforeach
+                            @else
+                                None
+                            @endif
+                        </p>
                         @if($post->project_link)
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif

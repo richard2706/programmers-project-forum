@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::get();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -53,6 +55,7 @@ class PostController extends Controller
         $post->image_link = $request->image_link;
         $currentProfile = Auth::user()->userProfile;
         $currentProfile->posts()->save($post);
+        $post->tags()->attach($request->tag);
 
         return redirect()->route('home')->with('message', 'Post added successfully.');
     }
@@ -81,7 +84,8 @@ class PostController extends Controller
             return abort(401);
         }
 
-        return view('posts.edit', compact('post'));
+        $tags = Tag::get();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -109,6 +113,10 @@ class PostController extends Controller
         $post->image_link = $request->image_link;
         $post->content = $request->content;
         $post->save();
+
+        // Remove all old tags then add updated tags
+        $post->tags()->detach(Tag::get()->modelKeys());
+        $post->tags()->attach($request->tag);
 
         return redirect()->route('posts.show', compact('post'))
             ->with('post_message', 'Post updated.');

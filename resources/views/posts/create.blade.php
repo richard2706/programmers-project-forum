@@ -25,6 +25,15 @@
                             <p>Title</p>
                             <input type="text" name="title"/>
                         </div>
+                        <div class="mb-4">
+                            <p>Tags</p>
+                            <p><i class="text-sm">Please ctrl + click to select multiple tags</i></p>
+                            <select name="tag[]" multiple>
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="my-4">
                             <p>Project Link (optional)</p>
                             <input type="text" name="project_link"/>

@@ -20,11 +20,22 @@
                         </ul>
                     @endif
 
+                    {{-- {{ $post->tags->moe }} --}}
+
                     <form method="POST" action="{{ route('posts.update', compact('post')) }}">
                         @csrf
                         <div class="mb-4">
                             <p>Title</p>
                             <input type="text" name="title" value="{{ $post->title }}"/>
+                        </div>
+                        <div class="mb-4">
+                            <p>Tags</p>
+                            <p><i class="text-sm">Please ctrl + click to select multiple tags</i></p>
+                            <select name="tag[]" multiple>
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}" @if(in_array($tag->id, $post->tags->modelKeys())) selected @endif>{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="my-4">
                             <p>Project Link (optional)</p>
