@@ -12,16 +12,6 @@ use Illuminate\Support\Facades\Mail;
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @param  Post  $post
@@ -60,17 +50,6 @@ class CommentController extends Controller
 
         return redirect()->route('posts.show', compact('post'))
             ->with('comment_message', 'Comment added.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

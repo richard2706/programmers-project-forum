@@ -133,15 +133,4 @@ class PostController extends Controller
         return redirect()->route('posts.show', compact('post'))
             ->with('post_message', 'Post updated.');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
