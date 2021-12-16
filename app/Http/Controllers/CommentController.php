@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 class CommentController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new comment.
      *
      * @param  Post  $post
      * @return \Illuminate\Http\Response
@@ -23,7 +23,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created comment in storage.
      *
      * @param  Post  $post
      * @param  \Illuminate\Http\Request  $request
@@ -53,7 +53,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a comment.
      *
      * @param  Post  $post
      * @param  Comment  $comment
@@ -69,7 +69,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the comment in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  Post  $post
@@ -94,7 +94,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the comment from storage.
      *
      * @param  Post  $post
      * @param  Comment  $comment
