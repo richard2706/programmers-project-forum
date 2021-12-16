@@ -19,37 +19,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [PostController::class, 'index'])
+Route::get('/posts', [PostController::class, 'index'])
     ->middleware(['auth'])->name('home');
 
-Route::get('/home/posts/newpost', [PostController::class, 'create'])
+Route::get('/posts/newpost', [PostController::class, 'create'])
     ->middleware(['auth'])->name('posts.create');
 
-Route::post('/home', [PostController::class, 'store'])
+Route::post('/posts', [PostController::class, 'store'])
     ->middleware(['auth'])->name('posts.store');
 
-Route::get('/home/posts/{post}', [PostController::class, 'show'])
+Route::get('/posts/{post}', [PostController::class, 'show'])
     ->middleware(['auth'])->name('posts.show');
 
-Route::get('home/posts/{post}/edit', [PostController::class, 'edit'])
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
     ->middleware(['auth'])->name('posts.edit');
 
-Route::post('/home/posts/{post}/update', [PostController::class, 'update'])
+Route::post('/posts/{post}/update', [PostController::class, 'update'])
     ->middleware(['auth'])->name('posts.update');
 
-Route::get('/home/posts/{post}/newcomment', [CommentController::class, 'create'])
+Route::get('/posts/{post}/newcomment', [CommentController::class, 'create'])
     ->middleware(['auth'])->name('comments.create');
 
-Route::post('/home/posts/{post}', [CommentController::class, 'store'])
+Route::post('/posts/{post}', [CommentController::class, 'store'])
     ->middleware(['auth'])->name('comments.store');
 
-Route::get('/home/posts/{post}/comment/{comment}/editcomment', [CommentController::class, 'edit'])
+Route::get('/posts/{post}/comment/{comment}/edit', [CommentController::class, 'edit'])
     ->middleware(['auth'])->name('comments.edit');
 
-Route::post('/home/posts/{post}/comment/{comment}/update', [CommentController::class, 'update'])
+Route::post('/posts/{post}/comment/{comment}/update', [CommentController::class, 'update'])
     ->middleware(['auth'])->name('comments.update');
 
-Route::delete('/home/posts/{post}/comment/{comment}/delete', [CommentController::class, 'destroy'])
+Route::delete('/posts/{post}/comment/{comment}/delete', [CommentController::class, 'destroy'])
     ->middleware(['auth'])->name('comments.destroy');
 
 require __DIR__.'/auth.php';
