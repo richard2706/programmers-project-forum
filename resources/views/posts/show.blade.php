@@ -25,7 +25,9 @@
                         @endif
                         
                         <div class="my-4">
-                            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Shows an aspect of {{ $post->userProfile->username }}'s project.">
+                            @if ($post->image_path)
+                                <img src="{{ asset('storage/' . $post->image_path) }}" alt="Shows an aspect of {{ $post->userProfile->username }}'s project.">
+                            @endif
                             <p>{{ $post->content }}</p>
                         </div>
                         @if (session('post_message'))
