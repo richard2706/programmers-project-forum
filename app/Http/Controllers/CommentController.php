@@ -75,7 +75,7 @@ class CommentController extends Controller
     public function edit(Post $post, Comment $comment)
     {
         if (Auth::user()->userProfile != $comment->userProfile) {
-            return abort(403);
+            return abort(401);
         }
 
         return view('comments.edit', compact('post', 'comment'));
@@ -92,7 +92,7 @@ class CommentController extends Controller
     public function update(Request $request, Post $post, Comment $comment)
     {
         if (Auth::user()->userProfile != $comment->userProfile) {
-            return abort(403);
+            return abort(401);
         }
 
         $request->validate([
