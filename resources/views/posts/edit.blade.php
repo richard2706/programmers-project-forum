@@ -20,8 +20,6 @@
                         </ul>
                     @endif
 
-                    {{-- {{ $post->tags->moe }} --}}
-
                     <form method="POST" action="{{ route('posts.update', compact('post')) }}">
                         @csrf
                         <div class="mb-4">
@@ -43,7 +41,8 @@
                         </div>
                         <div class="my-4">
                             <p>Image (optional)</p>
-                            <input type="text" name="image_path" value="{{ $post->image_path }}"/>
+                            <p><i>File types accepted: jpg, jpeg, png, bmp, gif, svg, webp</i></p>
+                            <input type="file" name="image"/>
                         </div>
                         <div class="my-4">
                             <p>Content</p>
