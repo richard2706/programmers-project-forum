@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewComment;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -49,6 +51,12 @@ class CommentController extends Controller
         $currentProfile = Auth::user()->userProfile;
         $comment->userProfile()->associate($currentProfile);
         $post->comments()->save($comment);
+
+        // Send email to post creator (if it is not the current user)
+        $postCreatorProfile = $post->userProfile;
+        if ($postCreatorProfile != Auth::user()->userProfile) {
+            Mail::to($postCreatorProfile->user)->send(new NewComment($post, $comment));
+        }
 
         return redirect()->route('posts.show', compact('post'))
             ->with('comment_message', 'Comment added.');

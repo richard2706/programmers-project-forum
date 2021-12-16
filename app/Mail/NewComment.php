@@ -48,6 +48,7 @@ class NewComment extends Mailable
     public function build()
     {
         return $this->from('notifications@project-forum.com', 'Project Forum Notifications')
-            ->view('emails.newcomment');
+            ->view('emails.newcomment')
+            ->with(['post' => $this->post, 'comment' => $this->comment]);
     }
 }
