@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
 
@@ -45,7 +46,14 @@ class PostTableSeeder extends Seeder
         $profiles = UserProfile::get()->except($existingUserIds);
         foreach ($profiles as $profile) {
             $numPosts = rand(0, 3);
-            Post::factory()->count($numPosts)->for($profile)->create();
+            $newPosts = Post::factory()->count($numPosts)->for($profile)->create();
+            
+            // Attach some random tags
+            foreach ($newPosts as $newPost) {
+                $numTags = rand(0, 3);
+                $randomTags = Tag::get()->random($numTags)->modelKeys();
+                $newPost->tags()->attach($randomTags);
+            }
         }
     }
 }
