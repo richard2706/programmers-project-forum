@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a paginated listing of all posts, most recent first.
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new post.
      *
      * @return \Illuminate\Http\Response
      */
@@ -33,7 +33,7 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created post in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -67,7 +67,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the post and its comments (paginated, newest first).
      *
      * @param  Post  $post
      * @return \Illuminate\Http\Response
@@ -79,7 +79,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the post.
      *
      * @param  Post  $post
      * @return \Illuminate\Http\Response
@@ -95,7 +95,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the post in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  Post  $post
