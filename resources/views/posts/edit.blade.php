@@ -30,6 +30,7 @@
                         </div>
                         <div class="mb-4">
                             <p>Tags</p>
+                            <p><i class="text-sm">Please ctrl + click to select multiple tags</i></p>
                             <select name="tag[]" multiple>
                                 @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}" @if(in_array($tag->id, $post->tags->modelKeys())) selected @endif>{{ $tag->name }}</option>
