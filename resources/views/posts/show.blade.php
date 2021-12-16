@@ -27,7 +27,7 @@
                         @if (session('post_message'))
                             <p>{{ session('post_message') }}</p>
                         @endif
-                        @if (Auth::user()->userProfile == $post->userProfile)
+                        @if (Auth::user()->userProfile == $post->userProfile || Auth::user()->userProfile->user_type == "admin")
                             <a class="hover:underline" href="{{ route('posts.edit', compact('post')) }}">Edit Post</a>
                         @endif
                     </div>
