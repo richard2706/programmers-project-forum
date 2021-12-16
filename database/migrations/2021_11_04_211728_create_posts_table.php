@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
                 ->cascadeOnDelete()->cascadeOnUpdate();
             $table->dateTime("date_time_posted"); // YYYY-MM-DD HH:MM:SS
             $table->string("project_link")->nullable();
+            $table->string("image_path")->nullable();
             $table->timestamps();
         });
     }

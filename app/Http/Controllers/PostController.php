@@ -43,6 +43,7 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
+            'image' => ['nullable', 'image'],
             'content' => ['required'],
         ]);
 
@@ -51,6 +52,13 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->date_time_posted = date('Y-m-d H:i:s');
         $post->project_link = $request->project_link;
+
+        if ($request->has('image')) {
+            $folder = 'public';
+            $imagePath = $request->file('image')->store($folder . '/post-images');
+            $post->image_path = substr($imagePath, strlen($folder) + 1);
+        }
+
         $currentProfile = Auth::user()->userProfile;
         $currentProfile->posts()->save($post);
         $post->tags()->attach($request->tag);
@@ -102,12 +110,20 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
+            'image' => ['nullable', 'image'],
             'content' => ['required'],
         ]);
 
         $post->title = $request->title;
         $post->project_link = $request->project_link;
         $post->content = $request->content;
+
+        if ($request->has('image')) {
+            $folder = 'public';
+            $imagePath = $request->file('image')->store($folder . '/post-images');
+            $post->image_path = substr($imagePath, strlen($folder) + 1);
+        }
+        
         $post->save();
 
         // Remove all old tags then add updated tags

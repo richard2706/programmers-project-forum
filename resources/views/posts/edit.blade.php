@@ -20,7 +20,7 @@
                         </ul>
                     @endif
 
-                    <form method="POST" action="{{ route('posts.update', compact('post')) }}">
+                    <form method="POST" action="{{ route('posts.update', compact('post')) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-4">
@@ -42,7 +42,11 @@
                             <p>Project Link (optional)</p>
                             <input type="text" name="project_link" value="{{ $post->project_link }}"/>
                         </div>
-                        
+                        <div class="my-4">
+                            <p>Image (optional)</p>
+                            <p><i>File types accepted: jpg, jpeg, png, bmp, gif, svg, webp</i></p>
+                            <input type="file" name="image"/>
+                        </div>
                         <div class="my-4">
                             <p>Content</p>
                             <input type="text" name="content" value="{{ $post->content }}"/>
