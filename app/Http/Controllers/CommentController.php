@@ -114,6 +114,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'delete comment';
     }
 }

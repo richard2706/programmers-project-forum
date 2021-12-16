@@ -53,9 +53,19 @@
                             <div class="my-4 p-2 bg-gray-100 rounded" >
                                 <p class="text-sm">Posted by {{ $comment->userProfile->username }}@if(Auth::user()->userProfile == $comment->userProfile) (you)@endif, <i>{{ $comment->date_time_posted }}</i></p>
                                 <p class="mt-1">{{ $comment->content }}</p>
-                                @if (Auth::user()->userProfile == $comment->userProfile)
+
+                                @if (Auth::user()->userProfile == $comment->userProfile || Auth::user()->userProfile->user_type == "admin")
                                     <div class="mt-2">
-                                        <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
+                                        @if (Auth::user()->userProfile == $comment->userProfile)
+                                            <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
+                                        @endif
+                                        @if (Auth::user()->userProfile == $comment->userProfile  || Auth::user()->userProfile->user_type == "admin")
+                                            <form method="POST" action="{{ route('comments.destroy', compact('post', 'comment')) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" value="Delete comment" class="hover:underline cursor-pointer bg-transparent"/>
+                                            </form>
+                                        @endif
                                     </div>
                                 @endif
                             </div>

@@ -49,4 +49,7 @@ Route::get('/home/posts/{post}/comment/{comment}/editcomment', [CommentControlle
 Route::post('/home/posts/{post}/comment/{comment}/update', [CommentController::class, 'update'])
     ->middleware(['auth'])->name('comments.update');
 
+Route::delete('/home/posts/{post}/comment/{comment}/delete', [CommentController::class, 'destroy'])
+    ->middleware(['auth'])->name('comments.destroy');
+
 require __DIR__.'/auth.php';
