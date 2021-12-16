@@ -114,6 +114,10 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
+        // Remove all old tags then add updated tags
+        $post->tags()->detach(Tag::get()->modelKeys());
+        $post->tags()->attach($request->tag);
+
         return redirect()->route('posts.show', compact('post'))
             ->with('post_message', 'Post updated.');
     }
