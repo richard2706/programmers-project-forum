@@ -22,7 +22,6 @@ class PostFactory extends Factory
             "content" => $this->faker->paragraph(5),
             "date_time_posted" => $this->faker->dateTimeThisYear->format("Y-m-d H:i:s"),
             "project_link" => $this->faker->optional()->url,
-            "image_link" => $this->faker->optional()->url,
         ];
     }
 }

@@ -43,7 +43,6 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
-            'image_link' => ['nullable', 'url'],
             'content' => ['required'],
         ]);
 
@@ -52,7 +51,6 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->date_time_posted = date('Y-m-d H:i:s');
         $post->project_link = $request->project_link;
-        $post->image_link = $request->image_link;
         $currentProfile = Auth::user()->userProfile;
         $currentProfile->posts()->save($post);
         $post->tags()->attach($request->tag);
@@ -104,13 +102,11 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
-            'image_link' => ['nullable', 'url'],
             'content' => ['required'],
         ]);
 
         $post->title = $request->title;
         $post->project_link = $request->project_link;
-        $post->image_link = $request->image_link;
         $post->content = $request->content;
         $post->save();
 
