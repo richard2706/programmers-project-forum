@@ -40,7 +40,7 @@
                         </div>
                         <div class="my-4">
                             <p>Image (optional)</p>
-                            <input type="text" name="image_link"/>
+                            <input type="file" name="image_link"/>
                         </div>
                         <div class="my-4">
                             <p>Content</p>
