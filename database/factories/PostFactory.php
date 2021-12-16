@@ -15,14 +15,17 @@ class PostFactory extends Factory
     public function definition()
     {
         $numTitleWords = rand(1, 6);
-        $numUsers = UserProfile::count();
+        
+        $imageFolder = 'storage/app/public';
+        $fullImagePath = $this->faker->optional()->image($imageFolder . '/post-images');
+        $imagePath = substr($fullImagePath, strlen($imageFolder) + 1);
 
         return [
             "title" => $this->faker->words($numTitleWords, true),
             "content" => $this->faker->paragraph(5),
             "date_time_posted" => $this->faker->dateTimeThisYear->format("Y-m-d H:i:s"),
             "project_link" => $this->faker->optional()->url,
-            "image_path" => $this->faker->optional()->url,
+            "image_path" => $imagePath,
         ];
     }
 }
