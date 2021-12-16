@@ -43,7 +43,7 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
-            'image_link' => ['nullable', 'url'],
+            'image' => ['nullable', 'image'],
             'content' => ['required'],
         ]);
 
@@ -52,7 +52,12 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->date_time_posted = date('Y-m-d H:i:s');
         $post->project_link = $request->project_link;
-        $post->image_link = $request->image_link;
+
+        if ($request->has('image')) {
+            $imagePath = $request->file('image')->store('public/post-images');
+            $post->image_link = $imagePath;
+        }
+
         $currentProfile = Auth::user()->userProfile;
         $currentProfile->posts()->save($post);
         $post->tags()->attach($request->tag);
