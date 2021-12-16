@@ -13,6 +13,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
                         <p class="text-sm">Posted by {{ $post->userProfile->username }}@if(Auth::user()->userProfile == $post->userProfile) (you)@endif, <i>{{ $post->date_time_posted }}</i></p>
+
                         <p>Tags: 
                             @if ($post->tags->count() > 0)
                                 @foreach ($post->tags as $tag) {{ $tag->name }},@endforeach
@@ -20,6 +21,7 @@
                                 None
                             @endif
                         </p>
+
                         @if($post->project_link)
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif
@@ -30,6 +32,7 @@
                             @endif
                             <p>{{ $post->content }}</p>
                         </div>
+
                         @if (session('post_message'))
                             <p>{{ session('post_message') }}</p>
                         @endif
@@ -65,6 +68,7 @@
                                         @if (Auth::user()->userProfile == $comment->userProfile)
                                             <a class="hover:underline" href="{{ route('comments.edit', compact('post', 'comment')) }}">Edit comment</a>
                                         @endif
+
                                         @if (Auth::user()->userProfile == $comment->userProfile  || Auth::user()->userProfile->user_type == "admin")
                                             <form method="POST" action="{{ route('comments.destroy', compact('post', 'comment')) }}">
                                                 @csrf
