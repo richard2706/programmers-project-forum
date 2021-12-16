@@ -43,7 +43,7 @@
                         </div>
                         <div class="my-4">
                             <p>Image (optional)</p>
-                            <input type="text" name="image_link" value="{{ $post->image_link }}"/>
+                            <input type="text" name="image_path" value="{{ $post->image_path }}"/>
                         </div>
                         <div class="my-4">
                             <p>Content</p>

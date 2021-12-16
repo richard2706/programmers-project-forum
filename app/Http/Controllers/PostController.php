@@ -55,7 +55,7 @@ class PostController extends Controller
 
         if ($request->has('image')) {
             $imagePath = $request->file('image')->store('public/post-images');
-            $post->image_link = $imagePath;
+            $post->image_path = $imagePath;
         }
 
         $currentProfile = Auth::user()->userProfile;
@@ -109,13 +109,13 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'max:255'],
             'project_link' => ['nullable', 'url'],
-            'image_link' => ['nullable', 'url'],
+            'image_path' => ['nullable', 'url'],
             'content' => ['required'],
         ]);
 
         $post->title = $request->title;
         $post->project_link = $request->project_link;
-        $post->image_link = $request->image_link;
+        $post->image_path = $request->image_path;
         $post->content = $request->content;
         $post->save();
 
