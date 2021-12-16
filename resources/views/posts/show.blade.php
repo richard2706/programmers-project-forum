@@ -23,7 +23,7 @@
                         @if($post->project_link)
                             <p>See project here: <a class="hover:underline" href="{{ $post->project_link }}">{{ $post->project_link }}</a></p>
                         @endif
-                        <!-- Insert image here -->
+                        
                         <p class="my-4">{{ $post->content }}</p>
                         @if (session('post_message'))
                             <p>{{ session('post_message') }}</p>
