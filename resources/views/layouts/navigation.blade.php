@@ -24,7 +24,7 @@
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out p-1">
                             <div>
-                                <p class="text-right font-bold">{{ Auth::user()->name }}</p>
+                                <p class="text-right font-bold">{{ Auth::user()->name }} @if(Auth::user()->userProfile->user_type == "admin") (admin)@endif</p>
                                 <i class="text-right text-xs">{{ Auth::user()->userProfile->username }}</i>
                             </div>
 
